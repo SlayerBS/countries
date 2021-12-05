@@ -24,12 +24,12 @@ const Wrapper = styled.div`
   } ;
 `;
 
-export const Controls = () => {
+export const Controls = ({ onSearch }) => {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("");
 
   return (
-    <div>
+    <Wrapper>
       <Search search={search} setSearch={setSearch} />
       <CustomSelect
         options={options}
@@ -39,6 +39,6 @@ export const Controls = () => {
         value={region}
         onChange={setRegion}
       />
-    </div>
+    </Wrapper>
   );
 };
