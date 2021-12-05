@@ -11,10 +11,19 @@ export const HomePage = ({ setCountries, countries }) => {
 
   const navigate = useNavigate();
 
-    const handleSearch = (search, region) => {
-        let data = [...countries];
+  const handleSearch = (search, region) => {
+    let data = [...countries];
 
-        if (region)
+    if (region) {
+      data = data.filter((c) => c.region.includes(region));
+    }
+
+    if (search) {
+      data = data.filter((c) =>
+        c.name.toLowerCase().includes(search.toLowerCase)
+      );
+    }
+    setFilteredCountries(data);
   };
 
   useEffect(() => {
@@ -24,9 +33,9 @@ export const HomePage = ({ setCountries, countries }) => {
 
   return (
     <>
-      <Controls />
+      <Controls onSearch={handleSearch} />
       <List>
-        {countries.map((c) => {
+        {filteredCountries.map((c) => {
           const countryInfo = {
             img: c.flags.png,
             name: c.name,
