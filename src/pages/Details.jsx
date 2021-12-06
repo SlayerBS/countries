@@ -12,8 +12,6 @@ export const Details = () => {
   const goBack = () => navigate(-1);
   const [country, setCountry] = useState(null);
 
-  console.log(country);
-
   useEffect(() => {
     axios.get(searchByCountry(name)).then(({ data }) => setCountry(data[0]));
   }, [name]);
@@ -25,7 +23,6 @@ export const Details = () => {
         Back
       </Button>
       {country && <Info navigate={navigate} {...country} />}
-      Details {name}
     </div>
   );
 };
