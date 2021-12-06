@@ -12,11 +12,6 @@ export const HomePage = ({ setCountries, countries }) => {
   const navigate = useNavigate();
 
   const handleSearch = (search, region) => {
-    console.log(
-      "🚀 ~ file: HomePage.jsx ~ line 15 ~ handleSearch ~ search, region",
-      search,
-      region
-    );
     let data = [...countries];
 
     if (region) {
