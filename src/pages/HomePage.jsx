@@ -12,6 +12,11 @@ export const HomePage = ({ setCountries, countries }) => {
   const navigate = useNavigate();
 
   const handleSearch = (search, region) => {
+    console.log(
+      "🚀 ~ file: HomePage.jsx ~ line 15 ~ handleSearch ~ search, region",
+      search,
+      region
+    );
     let data = [...countries];
 
     if (region) {
@@ -20,13 +25,14 @@ export const HomePage = ({ setCountries, countries }) => {
 
     if (search) {
       data = data.filter((c) =>
-        c.name.toLowerCase().includes(search.toLowerCase)
+        c.name.toLowerCase().includes(search.toLowerCase())
       );
     }
     setFilteredCountries(data);
   };
 
   useEffect(() => {
+    console.log("countries", countries);
     if (!countries.length)
       axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
   }, []);
